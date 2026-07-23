@@ -57,6 +57,7 @@ def verify(obs):
         "validator_votes": votes,
         "confidence": round(confidence, 4),
         "status": status,
+        "consensus_validator_count": consensus["validator_count"],
         "verified_at": datetime.now(timezone.utc).isoformat(),
     }
 
