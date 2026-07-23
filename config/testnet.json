@@ -1,0 +1,21 @@
+{
+  "project": "NexusAI Network",
+  "environment": "testnet",
+  "network": {
+    "ecosystem": "Konnex",
+    "mode": "experimental"
+  },
+  "prototype": {
+    "type": "PoPW Sensor Verification",
+    "validator_count": 3,
+    "consensus_threshold": 0.6667
+  },
+  "verification": {
+    "hash_algorithm": "SHA-256",
+    "output_file": "src/demo_output.json"
+  },
+  "deployment": {
+    "status": "not_deployed",
+    "target": "Konnex testnet"
+  }
+}
