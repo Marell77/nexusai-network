@@ -26,3 +26,9 @@ jobs:
         run: |
           test -f src/demo_output.json
           cat src/demo_output.json
+      - name: Upload PoPW verification receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: popw-verification-receipt
+          path: src/demo_output.json
+          if-no-files-found: error
