@@ -30,6 +30,8 @@ jobs:
 
       - name: Validate PoPW receipt
         run: python src/verify_receipt.py
+      - name: Test validator signature
+        run: python src/validator_signature.py
 
       - name: Upload PoPW verification receipt
         uses: actions/upload-artifact@v4
