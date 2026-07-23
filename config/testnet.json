@@ -6,9 +6,24 @@
     "mode": "experimental"
   },
   "prototype": {
-    "type": "PoPW Sensor Verification",
-    "validator_count": 3,
-    "consensus_threshold": 0.6667
+  "type": "PoPW Sensor Verification",
+  "validator_count": 3,
+  "consensus_threshold": 0.6667,
+  "validators": [
+    {
+      "id": "validator-alpha",
+      "tolerance": 0.00
+    },
+    {
+      "id": "validator-beta",
+      "tolerance": 0.02
+    },
+    {
+      "id": "validator-gamma",
+      "tolerance": -0.02
+    }
+  ]
+},
   },
   "verification": {
     "hash_algorithm": "SHA-256",
