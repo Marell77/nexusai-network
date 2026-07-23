@@ -76,7 +76,7 @@ def main():
     observations = json.loads(
         data_path.read_text()
     )
-        results = []
+    results = []
 
     print("NexusAI Network - PoPW Sensor Verification Prototype")
 
