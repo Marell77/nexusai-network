@@ -48,7 +48,7 @@ def main():
     if not isinstance(results, list) or not results:
         fail("No verification results found")
 
-        for index, result in enumerate(results):
+            for index, result in enumerate(results):
         required_result_fields = [
             "sensor_id",
             "validator_votes",
@@ -88,10 +88,11 @@ def main():
         if calculated_hash != receipt_hash:
             fail(f"Result {index} PoPW receipt hash mismatch")
 
-        print("PoPW receipt validation PASSED")
-        print(f"Project: {data['project']}")
-        print(f"Network: {data['network']}")
-        print(f"Results verified: {len(results)}")
+    print("PoPW receipt validation PASSED")
+    print(f"Project: {data['project']}")
+    print(f"Network: {data['network']}")
+    print(f"Results verified: {len(results)}")
+
 
 
         if __name__ == "__main__":
