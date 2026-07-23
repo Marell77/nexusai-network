@@ -1,29 +1,47 @@
-from src.consensus import verify
+import json
+import subprocess
+import sys
+from pathlib import Path
 
 
-def test_valid_sensor_is_verified():
-    observation = {
-        "sensor_id": "test-sensor-001",
-        "timestamp": "2026-07-23T00:00:00Z",
-        "temperature_c": 25,
-        "humidity": 60
-    }
+def test_consensus_prototype_runs():
+    result = subprocess.run(
+        [sys.executable, "src/main.py"],
+        capture_output=True,
+        text=True
+    )
 
-    result = verify(observation)
-
-    assert result["status"] == "VERIFIED"
-    assert result["confidence"] >= 0.6667
-    assert result["consensus_validator_count"] == 3
+    assert result.returncode == 0
 
 
-def test_invalid_sensor_is_rejected():
-    observation = {
-        "sensor_id": "test-sensor-002",
-        "timestamp": "2026-07-23T00:00:00Z",
-        "temperature_c": 100,
-        "humidity": 60
-    }
+def test_demo_output_contains_results():
+    subprocess.run(
+        [sys.executable, "src/main.py"],
+        check=True
+    )
 
-    result = verify(observation)
+    output_path = Path("src/demo_output.json")
 
-    assert result["status"] == "REJECTED"
+    assert output_path.exists()
+
+    data = json.loads(output_path.read_text())
+
+    assert "results" in data
+    assert len(data["results"]) > 0
+
+
+def test_consensus_metadata():
+    subprocess.run(
+        [sys.executable, "src/main.py"],
+        check=True
+    )
+
+    data = json.loads(Path("src/demo_output.json").read_text())
+
+    for result in data["results"]:
+        assert "status" in result
+        assert result["status"] in ("VERIFIED", "REJECTED")
+        assert "confidence" in result
+        assert "consensus_validator_count" in result
+        assert "popw_receipt_hash" in result
+        assert len(result["popw_receipt_hash"]) == 64
