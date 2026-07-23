@@ -36,14 +36,19 @@ def verify(obs):
         for validator in VALIDATORS
     ]
 
-    accepted_votes = sum(
-        1 for vote in votes if vote["accepted"]
-    )
-
-    confidence = accepted_votes / len(votes)
+    consensus_votes = [
+    {
+        "validator": vote["validator"],
+        "status": "VERIFIED" if vote["accepted"] else "REJECTED",
+    }
+    for vote in votes
+]
 
     threshold = CONFIG["prototype"]["consensus_threshold"]
-    status = "VERIFIED" if confidence >= threshold else "REJECTED"
+    consensus = calculate_consensus(consensus_votes, threshold)
+
+    confidence = consensus["confidence"]
+    status = consensus["status"]
 
     receipt = {
         "sensor_id": obs["sensor_id"],
