@@ -2,7 +2,12 @@ import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+CONFIG_PATH = Path(__file__).parent.parent / "config" / "testnet.json"
 
+def load_config():
+    return json.loads(CONFIG_PATH.read_text())
+
+CONFIG = load_config()
 
 VALIDATORS = [
     {"id": "validator-alpha", "tolerance": 0.00},
