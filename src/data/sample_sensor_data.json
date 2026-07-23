@@ -1,0 +1,20 @@
+[
+  {
+    "sensor_id": "sensor-jakarta-001",
+    "timestamp": "2026-07-23T07:00:00Z",
+    "temperature_c": 31.2,
+    "humidity_pct": 72.0
+  },
+  {
+    "sensor_id": "sensor-jakarta-002",
+    "timestamp": "2026-07-23T07:00:05Z",
+    "temperature_c": 150.0,
+    "humidity_pct": 71.0
+  },
+  {
+    "sensor_id": "sensor-jakarta-003",
+    "timestamp": "2026-07-23T07:00:10Z",
+    "temperature_c": 30.8,
+    "humidity_pct": 69.5
+  }
+]
