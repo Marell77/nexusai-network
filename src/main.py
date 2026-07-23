@@ -72,7 +72,7 @@ def verify(obs):
 
 def main():
     data_path = (
-        Path(__file__).parent.parent
+        Path(__file__).parent
         / "data"
         / "sample_sensor_data.json"
     )
