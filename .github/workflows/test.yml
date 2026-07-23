@@ -26,6 +26,8 @@ jobs:
         run: |
           test -f src/demo_output.json
           cat src/demo_output.json
+     - name: Validate PoPW receipt
+       run: python src/verify_receipt.py
       - name: Upload PoPW verification receipt
         uses: actions/upload-artifact@v4
         with:
