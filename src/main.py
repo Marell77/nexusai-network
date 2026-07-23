@@ -99,10 +99,15 @@ def main():
     output_path = Path(__file__).parent / "demo_output.json"
 
     output = {
-        "project": "NexusAI Network",
-        "prototype": "PoPW Sensor Verification",
-        "network": "Konnex",
-        "results": results
+    "project": CONFIG["project"],
+    "environment": CONFIG["environment"],
+    "network": CONFIG["network"],
+    "prototype": {
+        "type": CONFIG["prototype"]["type"],
+        "validator_count": CONFIG["prototype"]["validator_count"],
+        "consensus_threshold": CONFIG["prototype"]["consensus_threshold"]
+    },
+    "results": results
     }
 
     output_path.write_text(
