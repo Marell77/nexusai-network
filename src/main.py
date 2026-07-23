@@ -2,6 +2,7 @@ import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
+from consensus import calculate_consensus
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "testnet.json"
 
 def load_config():
