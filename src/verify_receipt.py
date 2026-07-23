@@ -66,34 +66,34 @@ def main():
 
         receipt_hash = result["popw_receipt_hash"]
 
-if not isinstance(receipt_hash, str) or len(receipt_hash) != 64:
-    fail(f"Result {index} has invalid SHA-256 hash")
+        if not isinstance(receipt_hash, str) or len(receipt_hash) != 64:
+        fail(f"Result {index} has invalid SHA-256 hash")
 
-# Reconstruct the original receipt without its hash
-receipt_without_hash = {
-    key: value
-    for key, value in result.items()
-    if key != "popw_receipt_hash"
-}
+        # Reconstruct the original receipt without its hash
+        receipt_without_hash = {
+        key: value
+        for key, value in result.items()
+        if key != "popw_receipt_hash"
+        }
 
-canonical = json.dumps(
-    receipt_without_hash,
-    sort_keys=True,
-    separators=(",", ":"),
-)
+        canonical = json.dumps(
+        receipt_without_hash,
+        sort_keys=True,
+        separators=(",", ":"),
+        )
 
-calculated_hash = hashlib.sha256(
-    canonical.encode()
-).hexdigest()
+        calculated_hash = hashlib.sha256(
+        canonical.encode()
+        ).hexdigest()
 
-if calculated_hash != receipt_hash:
-    fail(f"Result {index} PoPW receipt hash mismatch")
+        if calculated_hash != receipt_hash:
+        fail(f"Result {index} PoPW receipt hash mismatch")
 
-    print("PoPW receipt validation PASSED")
-    print(f"Project: {data['project']}")
-    print(f"Network: {data['network']}")
-    print(f"Results verified: {len(results)}")
+        print("PoPW receipt validation PASSED")
+        print(f"Project: {data['project']}")
+        print(f"Network: {data['network']}")
+        print(f"Results verified: {len(results)}")
 
 
-if __name__ == "__main__":
-    main()
+        if __name__ == "__main__":
+        main()
