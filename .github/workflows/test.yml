@@ -22,3 +22,7 @@ jobs:
 
       - name: Run NexusAI PoPW prototype
         run: python src/main.py
+      - name: Verify demo output
+        run: |
+          test -f src/demo_output.json
+          cat src/demo_output.json
