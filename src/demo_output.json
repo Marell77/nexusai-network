@@ -1,0 +1,33 @@
+{
+  "project": "NexusAI Network",
+  "prototype": "PoPW Sensor Verification",
+  "network": "Konnex",
+  "description": "Example output from decentralized environmental sensor validation.",
+  "verification_flow": [
+    "Sensor submits observation",
+    "Independent validators evaluate data",
+    "Validator votes are aggregated",
+    "Consensus confidence is calculated",
+    "PoPW verification receipt is generated"
+  ],
+  "example_result": {
+    "sensor_id": "sensor-001",
+    "validator_votes": [
+      {
+        "validator": "validator-alpha",
+        "accepted": true
+      },
+      {
+        "validator": "validator-beta",
+        "accepted": true
+      },
+      {
+        "validator": "validator-gamma",
+        "accepted": true
+      }
+    ],
+    "confidence": 1.0,
+    "status": "VERIFIED",
+    "popw_receipt_hash": "example-generated-by-nexusai-prototype"
+  }
+}
