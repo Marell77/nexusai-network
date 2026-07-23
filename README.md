@@ -293,3 +293,28 @@ Future development may explore:
 
 NexusAI Network is an experimental research prototype. Architecture, consensus mechanisms, and integration details may change as development progresses.
 ``
+## Live Prototype Output
+
+NexusAI includes a working Proof-of-Physical-World (PoPW) sensor verification prototype.
+
+The prototype currently demonstrates:
+
+- 3 independent validators
+- Multi-validator consensus
+- Configurable consensus threshold (0.6667)
+- VERIFIED and REJECTED sensor results
+- Confidence scoring
+- SHA-256 PoPW verification receipts
+- Consensus metadata
+- Automated verification through GitHub Actions
+
+### Example Verification
+
+```json
+{
+  "sensor_id": "sensor-jakarta-001",
+  "validator_count": 3,
+  "confidence": 1.0,
+  "status": "VERIFIED",
+  "consensus_validator_count": 3
+}
