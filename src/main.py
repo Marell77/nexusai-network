@@ -76,11 +76,13 @@ def main():
     observations = json.loads(
         data_path.read_text()
     )
+        results = []
 
     print("NexusAI Network - PoPW Sensor Verification Prototype")
 
     for obs in observations:
         result = verify(obs)
+        results.append(result)
 
         print(f'\nSensor: {result["sensor_id"]}')
 
@@ -92,6 +94,21 @@ def main():
         print(f'Confidence: {result["confidence"]}')
         print(f'Status: {result["status"]}')
         print(f'PoPW Receipt: {result["popw_receipt_hash"]}')
+
+    output_path = Path(__file__).parent / "demo_output.json"
+
+    output = {
+        "project": "NexusAI Network",
+        "prototype": "PoPW Sensor Verification",
+        "network": "Konnex",
+        "results": results
+    }
+
+    output_path.write_text(
+        json.dumps(output, indent=2)
+    )
+
+    print(f"\nDemo output saved to: {output_path}")
 
 
 if __name__ == "__main__":
