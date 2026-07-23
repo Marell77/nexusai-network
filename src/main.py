@@ -87,16 +87,19 @@ def main():
     )
 
     for obs in observations:
-        result = verify(obs)
+    result = verify(obs)
 
-        print(f'Sensor: {result["sensor_id"]}')
+    print(f'Sensor: {result["sensor_id"]}')
 
-        for vote in result["validator_votes"]:
-            decision = (
-                "ACCEPT"
-                if vote["accepted"]
-                else "REJECT"
-            )
+    for vote in result["validator_votes"]:
+        decision = "ACCEPT" if vote["accepted"] else "REJECT"
+        print(f'  {vote["validator"]}: {decision}')
 
-            print(
-                f'  {vote["validator"]}: {
+    print(f'  Confidence: {result["confidence"]:.0%}')
+    print(f'  Result: {result["status"]}')
+    print(f'  PoPW receipt: {result["popw_receipt_hash"]}')
+    print()
+
+
+if __name__ == "__main__":
+    main()
