@@ -58,7 +58,7 @@ def main():
         ]
 
         for field in required_result_fields:
-            if field not in result:
+        if field not in result:
                 fail(f"Result {index} missing field: {field}")
 
         if result["status"] not in ("VERIFIED", "REJECTED"):
@@ -67,7 +67,7 @@ def main():
         receipt_hash = result["popw_receipt_hash"]
 
         if not isinstance(receipt_hash, str) or len(receipt_hash) != 64:
-        fail(f"Result {index} has invalid SHA-256 hash")
+           fail(f"Result {index} has invalid SHA-256 hash")
 
         # Reconstruct the original receipt without its hash
         receipt_without_hash = {
