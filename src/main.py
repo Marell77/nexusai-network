@@ -9,12 +9,7 @@ def load_config():
 
 CONFIG = load_config()
 
-VALIDATORS = [
-    {"id": "validator-alpha", "tolerance": 0.00},
-    {"id": "validator-beta", "tolerance": 0.02},
-    {"id": "validator-gamma", "tolerance": -0.02},
-]
-
+VALIDATORS = CONFIG["prototype"]["validators"]
 
 def validate_observation(obs, validator):
     temperature = float(obs["temperature_c"])
