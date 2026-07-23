@@ -48,7 +48,7 @@ def main():
     if not isinstance(results, list) or not results:
         fail("No verification results found")
 
-            for index, result in enumerate(results):
+    for index, result in enumerate(results):
         required_result_fields = [
             "sensor_id",
             "validator_votes",
@@ -94,6 +94,5 @@ def main():
     print(f"Results verified: {len(results)}")
 
 
-
-        if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
