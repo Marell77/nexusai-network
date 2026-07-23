@@ -46,7 +46,8 @@ def verify(obs):
 
     confidence = accepted_votes / len(votes)
 
-    status = "VERIFIED" if confidence >= 2 / 3 else "REJECTED"
+    threshold = CONFIG["prototype"]["consensus_threshold"]
+status = "VERIFIED" if confidence >= threshold else "REJECTED"
 
     receipt = {
         "sensor_id": obs["sensor_id"],
